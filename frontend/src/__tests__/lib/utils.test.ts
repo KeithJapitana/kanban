@@ -6,6 +6,7 @@ import {
   moveCard,
   removeCard,
   renameColumn,
+  updateCard,
 } from '@/lib/utils';
 
 describe('board utilities', () => {
@@ -28,10 +29,10 @@ describe('board utilities', () => {
   });
 
   it('adds a card to the end of a column', () => {
-    const cards = addCardToColumn(initialBoardState.cards, 'todo', 'New card', 'Details');
+    const cards = addCardToColumn(initialBoardState.cards, 'todo', 'New card', 'Details', 'medium');
     const todoCards = getCardsForColumn(cards, 'todo');
 
-    expect(todoCards.at(-1)).toMatchObject({ title: 'New card', description: 'Details', order: 3 });
+    expect(todoCards.at(-1)).toMatchObject({ title: 'New card', description: 'Details', order: 3, priority: 'medium' });
   });
 
   it('removes a card and normalizes order', () => {
@@ -60,6 +61,19 @@ describe('board utilities', () => {
     const cards = moveCard(initialBoardState.cards, 'card-3', { type: 'card', id: 'card-2' });
 
     expect(getCardsForColumn(cards, 'todo').map((card) => card.id)).toEqual(['card-1', 'card-3', 'card-2']);
+  });
+
+  it('updates a card title, description, and priority', () => {
+    const cards = updateCard(initialBoardState.cards, 'card-1', 'Updated title', 'Updated details', 'high');
+    const updated = cards.find((card) => card.id === 'card-1');
+
+    expect(updated).toMatchObject({ title: 'Updated title', description: 'Updated details', priority: 'high' });
+  });
+
+  it('returns cards unchanged when update target is not found', () => {
+    const cards = updateCard(initialBoardState.cards, 'nonexistent', 'Title', 'Desc', 'low');
+
+    expect(cards).toEqual(initialBoardState.cards);
   });
 });
 

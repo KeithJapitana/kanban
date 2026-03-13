@@ -21,6 +21,7 @@ import {
   moveCard,
   removeCard,
   renameColumn,
+  updateCard,
 } from '@/lib/utils';
 import Card from './Card';
 import Column from './Column';
@@ -111,10 +112,10 @@ export default function Board() {
                 key={column.id}
                 column={column}
                 cards={getCardsForColumn(board.cards, column.id)}
-                onAddCard={(title, description) => {
+                onAddCard={(title, description, priority) => {
                   setBoard((current) => ({
                     ...current,
-                    cards: addCardToColumn(current.cards, column.id, title, description),
+                    cards: addCardToColumn(current.cards, column.id, title, description, priority),
                   }));
                 }}
                 onDeleteCard={(cardId) => {
@@ -127,6 +128,12 @@ export default function Board() {
                   setBoard((current) => ({
                     ...current,
                     columns: renameColumn(current.columns, column.id, title),
+                  }));
+                }}
+                onUpdateCard={(cardId, title, description, priority) => {
+                  setBoard((current) => ({
+                    ...current,
+                    cards: updateCard(current.cards, cardId, title, description, priority),
                   }));
                 }}
               />

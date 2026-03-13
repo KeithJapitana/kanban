@@ -4,16 +4,24 @@ import { FormEvent, KeyboardEvent, useState } from 'react';
 import { X } from 'lucide-react';
 import { Priority } from '@/lib/types';
 
-interface AddCardFormProps {
-  columnTitle: string;
+interface EditCardFormProps {
+  cardTitle: string;
+  cardDescription: string;
+  cardPriority: Priority;
   onSubmit: (title: string, description: string, priority: Priority) => void;
   onCancel: () => void;
 }
 
-export default function AddCardForm({ columnTitle, onSubmit, onCancel }: AddCardFormProps) {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState<Priority>('medium');
+export default function EditCardForm({
+  cardTitle,
+  cardDescription,
+  cardPriority,
+  onSubmit,
+  onCancel,
+}: EditCardFormProps) {
+  const [title, setTitle] = useState(cardTitle);
+  const [description, setDescription] = useState(cardDescription);
+  const [priority, setPriority] = useState<Priority>(cardPriority);
   const [error, setError] = useState('');
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
@@ -43,13 +51,13 @@ export default function AddCardForm({ columnTitle, onSubmit, onCancel }: AddCard
         className="modal-card"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="add-card-heading"
+        aria-labelledby="edit-card-heading"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="modal-card__header">
           <div>
-            <p className="modal-card__eyebrow">New task</p>
-            <h3 id="add-card-heading">Add card to {columnTitle}</h3>
+            <p className="modal-card__eyebrow">Edit task</p>
+            <h3 id="edit-card-heading">Update card details</h3>
           </div>
           <button type="button" className="modal-card__close" onClick={onCancel} aria-label="Close">
             <X size={18} />
@@ -57,10 +65,10 @@ export default function AddCardForm({ columnTitle, onSubmit, onCancel }: AddCard
         </div>
 
         <form className="modal-form" onSubmit={submit} onKeyDown={handleEscape}>
-          <label className="modal-form__field" htmlFor="card-title">
+          <label className="modal-form__field" htmlFor="edit-card-title">
             <span>Title</span>
             <input
-              id="card-title"
+              id="edit-card-title"
               name="title"
               value={title}
               onChange={(event) => {
@@ -74,10 +82,10 @@ export default function AddCardForm({ columnTitle, onSubmit, onCancel }: AddCard
             />
           </label>
 
-          <label className="modal-form__field" htmlFor="card-description">
+          <label className="modal-form__field" htmlFor="edit-card-description">
             <span>Details</span>
             <textarea
-              id="card-description"
+              id="edit-card-description"
               name="description"
               value={description}
               onChange={(event) => setDescription(event.target.value)}
@@ -86,10 +94,10 @@ export default function AddCardForm({ columnTitle, onSubmit, onCancel }: AddCard
             />
           </label>
 
-          <label className="modal-form__field" htmlFor="card-priority">
+          <label className="modal-form__field" htmlFor="edit-card-priority">
             <span>Priority</span>
             <select
-              id="card-priority"
+              id="edit-card-priority"
               name="priority"
               value={priority}
               onChange={(event) => setPriority(event.target.value as Priority)}
@@ -107,7 +115,7 @@ export default function AddCardForm({ columnTitle, onSubmit, onCancel }: AddCard
               Cancel
             </button>
             <button type="submit" className="button button--primary">
-              Add Card
+              Save Changes
             </button>
           </div>
         </form>

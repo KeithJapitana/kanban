@@ -316,7 +316,9 @@ button {
 .task-card h3,
 .task-card__confirm-copy strong {
   margin: 0;
+  font-family: 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
   font-size: 1rem;
+  font-weight: 600;
   line-height: 1.4;
 }
 
@@ -327,6 +329,12 @@ button {
   line-height: 1.5;
 }
 
+.task-card__actions {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.task-card__edit,
 .task-card__delete {
   display: inline-flex;
   align-items: center;
@@ -337,11 +345,32 @@ button {
   border-radius: 999px;
   background: rgba(236, 173, 10, 0.12);
   color: var(--dark-navy);
+  opacity: 0;
+  transition: opacity 140ms ease;
 }
 
+.task-card:hover .task-card__edit,
+.task-card:hover .task-card__delete {
+  opacity: 1;
+}
+
+.task-card__edit:hover,
 .task-card__delete:hover {
   background: rgba(236, 173, 10, 0.24);
   color: var(--purple-secondary);
+}
+
+.task-card__priority-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  margin-top: 6px;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .task-card__confirm-copy {
@@ -410,7 +439,8 @@ button {
 }
 
 .modal-form__field input,
-.modal-form__field textarea {
+.modal-form__field textarea,
+.modal-form__field select {
   width: 100%;
   border: 1px solid rgba(3, 33, 71, 0.12);
   border-radius: 16px;
@@ -421,7 +451,8 @@ button {
 }
 
 .modal-form__field input:focus,
-.modal-form__field textarea:focus {
+.modal-form__field textarea:focus,
+.modal-form__field select:focus {
   border-color: rgba(32, 157, 215, 0.5);
   box-shadow: 0 0 0 4px rgba(32, 157, 215, 0.12);
 }

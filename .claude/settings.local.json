@@ -21,7 +21,14 @@
       "Bash(cmd /c \"taskkill /PID 13552 /F 2>&1\")",
       "Bash(taskkill /F /IM node.exe 2>/dev/null; sleep 2; rm -rf C:/agentic-coding/kanban/frontend/.next/dev/lock 2>/dev/null; cd C:/agentic-coding/kanban/frontend && npm run dev)",
       "Bash(cd C:/agentic-coding/kanban/frontend && npx tsc --noEmit 2>&1)",
-      "Bash(cd C:/agentic-coding/kanban/frontend && npx playwright test e2e/ --reporter=line 2>&1)"
+      "Bash(cd C:/agentic-coding/kanban/frontend && npx playwright test e2e/ --reporter=line 2>&1)",
+      "Bash(cd C:/agentic-coding/kanban/frontend && npm test -- --passWithNoTests 2>&1 | head -50)",
+      "Bash(cd C:/agentic-coding/kanban/frontend && npx jest --testPathPattern=\"utils\" --no-coverage 2>&1)",
+      "Bash(cd C:/agentic-coding/kanban/frontend && npm test -- utils.test --no-coverage 2>&1)",
+      "Bash(cd C:/agentic-coding/kanban/frontend && npm test -- AddCardForm.test --no-coverage --watchAll=false 2>&1)",
+      "Bash(cd C:/agentic-coding/kanban/frontend && npm test -- Board.test --no-coverage --watchAll=false 2>&1)",
+      "Bash(npm test:*)",
+      "Bash(Get-Content \"C:\\\\Users\\\\keith\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--agentic-coding-kanban\\\\3bd86074-ade3-4c1a-9b7d-1bad1dcf7536\\\\tasks\\\\bgfq0o9e4.output\" -Tail 50)"
     ]
   }
 }

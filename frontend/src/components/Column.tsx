@@ -3,16 +3,17 @@
 import { useState } from 'react';
 import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
-import { Column as ColumnType, Card as CardType } from '@/lib/types';
+import { Column as ColumnType, Card as CardType, Priority } from '@/lib/types';
 import AddCardForm from './AddCardForm';
 import Card from './Card';
 
 interface ColumnProps {
   column: ColumnType;
   cards: CardType[];
-  onAddCard: (title: string, description: string) => void;
+  onAddCard: (title: string, description: string, priority: Priority) => void;
   onDeleteCard: (cardId: string) => void;
   onRenameColumn: (title: string) => void;
+  onUpdateCard?: (cardId: string, title: string, description: string, priority: Priority) => void;
 }
 
 export default function Column({
@@ -21,6 +22,7 @@ export default function Column({
   onAddCard,
   onDeleteCard,
   onRenameColumn,
+  onUpdateCard,
 }: ColumnProps) {
   const [draftTitle, setDraftTitle] = useState(column.title);
   const [isEditing, setIsEditing] = useState(false);
@@ -94,7 +96,7 @@ export default function Column({
       <div ref={setNodeRef} className="column__body">
         <SortableContext items={cards.map((card) => card.id)} strategy={verticalListSortingStrategy}>
           {cards.map((card) => (
-            <Card key={card.id} card={card} onDeleteCard={onDeleteCard} />
+            <Card key={card.id} card={card} onDeleteCard={onDeleteCard} onUpdateCard={onUpdateCard} />
           ))}
         </SortableContext>
       </div>
@@ -112,8 +114,8 @@ export default function Column({
       {isComposerOpen ? (
         <AddCardForm
           columnTitle={column.title}
-          onSubmit={(title, description) => {
-            onAddCard(title, description);
+          onSubmit={(title, description, priority) => {
+            onAddCard(title, description, priority);
             setIsComposerOpen(false);
           }}
           onCancel={() => setIsComposerOpen(false)}
