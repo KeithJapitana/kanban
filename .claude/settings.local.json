@@ -28,7 +28,10 @@
       "Bash(cd C:/agentic-coding/kanban/frontend && npm test -- AddCardForm.test --no-coverage --watchAll=false 2>&1)",
       "Bash(cd C:/agentic-coding/kanban/frontend && npm test -- Board.test --no-coverage --watchAll=false 2>&1)",
       "Bash(npm test:*)",
-      "Bash(Get-Content \"C:\\\\Users\\\\keith\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--agentic-coding-kanban\\\\3bd86074-ade3-4c1a-9b7d-1bad1dcf7536\\\\tasks\\\\bgfq0o9e4.output\" -Tail 50)"
+      "Bash(Get-Content \"C:\\\\Users\\\\keith\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--agentic-coding-kanban\\\\3bd86074-ade3-4c1a-9b7d-1bad1dcf7536\\\\tasks\\\\bgfq0o9e4.output\" -Tail 50)",
+      "Bash(find /c/agentic-coding/kanban -type f -name \"*.json\" -o -name \"*.ts\" -o -name \"*.tsx\" -o -name \".gitignore\" -o -name \".env*\" -o -name \"README.md\" 2>/dev/null | head -30)",
+      "Bash(find /c/agentic-coding/kanban -name \"package.json\" -o -name \"next.config.ts\" -o -name \"next.config.js\" -o -name \".gitignore\" -o -name \".env*\" -o -name \"README.md\" -o -name \"layout.tsx\" 2>/dev/null | grep -v \".next\" | sort)",
+      "Bash(cd C:\\\\agentic-coding\\\\kanban\\\\frontend && npm ci && npm run build 2>&1 | tail -20)"
     ]
   }
 }

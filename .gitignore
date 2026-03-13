@@ -17,3 +17,14 @@ thumbs.db
 
 # Git itself
 .git/
+
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Build artifacts
+.next/
+frontend/.next/
+coverage/
+test-results/
+playwright-report/
