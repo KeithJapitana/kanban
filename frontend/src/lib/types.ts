@@ -3,12 +3,15 @@ export interface Column {
   title: string;
 }
 
+export type Priority = 'low' | 'medium' | 'high';
+
 export interface Card {
   id: string;
   columnId: string;
   title: string;
   description: string;
   order: number;
+  priority: Priority;
 }
 
 export interface BoardState {

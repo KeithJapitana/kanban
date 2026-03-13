@@ -1,4 +1,4 @@
-import { Card, Column } from './types';
+import { Card, Column, Priority } from './types';
 
 export const generateId = (): string => {
   if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
@@ -17,7 +17,8 @@ export const addCardToColumn = (
   cards: Card[],
   columnId: string,
   title: string,
-  description: string
+  description: string,
+  priority: Priority = 'medium'
 ): Card[] => {
   const nextCard: Card = {
     id: generateId(),
@@ -25,6 +26,7 @@ export const addCardToColumn = (
     title,
     description,
     order: getCardsForColumn(cards, columnId).length,
+    priority,
   };
 
   return [...cards, nextCard];
@@ -39,6 +41,15 @@ export const removeCard = (cards: Card[], cardId: string): Card[] => {
 
   return normalizeColumns(cards.filter((card) => card.id !== cardId), [cardToRemove.columnId]);
 };
+
+export const updateCard = (
+  cards: Card[],
+  cardId: string,
+  title: string,
+  description: string,
+  priority: Priority
+): Card[] =>
+  cards.map((card) => (card.id === cardId ? { ...card, title, description, priority } : card));
 
 export const renameColumn = (columns: Column[], columnId: string, title: string): Column[] =>
   columns.map((column) => (column.id === columnId ? { ...column, title } : column));

@@ -15,6 +15,7 @@ export const initialBoardState: BoardState = {
       title: 'Shape the launch narrative',
       description: 'Write the opening product story and align it with the new visual direction.',
       order: 0,
+      priority: 'high',
     },
     {
       id: 'card-2',
@@ -22,6 +23,7 @@ export const initialBoardState: BoardState = {
       title: 'Review onboarding friction',
       description: 'List the first-session blockers and reduce the number of clicks to first action.',
       order: 1,
+      priority: 'medium',
     },
     {
       id: 'card-3',
@@ -29,6 +31,7 @@ export const initialBoardState: BoardState = {
       title: 'Capture stakeholder feedback',
       description: 'Summarize last sprint feedback into concrete edits for content and interaction.',
       order: 2,
+      priority: 'low',
     },
     {
       id: 'card-4',
@@ -36,6 +39,7 @@ export const initialBoardState: BoardState = {
       title: 'Refine dashboard shell',
       description: 'Tighten spacing, header rhythm, and responsive behavior across breakpoints.',
       order: 0,
+      priority: 'high',
     },
     {
       id: 'card-5',
@@ -43,6 +47,7 @@ export const initialBoardState: BoardState = {
       title: 'Polish drag states',
       description: 'Make movement feel crisp with clearer hover targets and stronger active feedback.',
       order: 1,
+      priority: 'medium',
     },
     {
       id: 'card-6',
@@ -50,6 +55,7 @@ export const initialBoardState: BoardState = {
       title: 'Audit microcopy',
       description: 'Remove vague language from buttons, labels, and modal prompts.',
       order: 0,
+      priority: 'medium',
     },
     {
       id: 'card-7',
@@ -57,6 +63,7 @@ export const initialBoardState: BoardState = {
       title: 'Check empty-state treatment',
       description: 'Confirm each stage still feels intentional when it has no cards.',
       order: 1,
+      priority: 'low',
     },
     {
       id: 'card-8',
@@ -64,6 +71,7 @@ export const initialBoardState: BoardState = {
       title: 'Run browser matrix',
       description: 'Verify the board feels stable in Chrome, Firefox, Safari, and narrow mobile widths.',
       order: 0,
+      priority: 'high',
     },
     {
       id: 'card-9',
@@ -71,6 +79,7 @@ export const initialBoardState: BoardState = {
       title: 'Approve color system',
       description: 'Lock the yellow, blue, purple, navy, and gray palette for the MVP.',
       order: 0,
+      priority: 'medium',
     },
     {
       id: 'card-10',
@@ -78,6 +87,7 @@ export const initialBoardState: BoardState = {
       title: 'Confirm MVP scope',
       description: 'Freeze the feature list at rename, drag, add, delete, and seeded dummy data.',
       order: 1,
+      priority: 'low',
     },
   ],
 };
