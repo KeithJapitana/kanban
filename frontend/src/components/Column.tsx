@@ -94,10 +94,17 @@ export default function Column({
       </div>
 
       <div ref={setNodeRef} className="column__body">
-        <SortableContext items={cards.map((card) => card.id)} strategy={verticalListSortingStrategy}>
-          {cards.map((card) => (
-            <Card key={card.id} card={card} onDeleteCard={onDeleteCard} onUpdateCard={onUpdateCard} />
-          ))}
+        <SortableContext
+          items={cards.map((card) => card.id)}
+          strategy={verticalListSortingStrategy}
+        >
+          {cards.length === 0 ? (
+            <div className="column__empty-placeholder">Drop cards here</div>
+          ) : (
+            cards.map((card) => (
+              <Card key={card.id} card={card} onDeleteCard={onDeleteCard} onUpdateCard={onUpdateCard} />
+            ))
+          )}
         </SortableContext>
       </div>
 
