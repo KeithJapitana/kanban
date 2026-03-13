@@ -9,6 +9,7 @@ import {
   KeyboardSensor,
   PointerSensor,
   closestCorners,
+  pointerWithin,
   useSensor,
   useSensors,
 } from '@dnd-kit/core';
@@ -53,12 +54,12 @@ export default function Board() {
       return;
     }
 
-    const overType = over.data.current?.type === 'column' ? 'column' : 'card';
+    const isColumnDrop = board.columns.some((col) => col.id === over.id);
 
     setBoard((current) => ({
       ...current,
       cards: moveCard(current.cards, String(active.id), {
-        type: overType,
+        type: isColumnDrop ? 'column' : 'card',
         id: String(over.id),
       }),
     }));
@@ -67,7 +68,11 @@ export default function Board() {
   return (
     <DndContext
       sensors={sensors}
-      collisionDetection={closestCorners}
+      collisionDetection={(args) => {
+        const pointerHits = pointerWithin(args);
+        if (pointerHits.length > 0) return pointerHits;
+        return closestCorners(args);
+      }}
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
