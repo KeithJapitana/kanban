@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm show:*)",
+      "Bash(npx create-next-app@16.1.6 frontend --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git)",
+      "Bash(echo \"No\" | npx create-next-app@16.1.6 frontend --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --no-git 2>&1)",
+      "Bash(cd frontend:*)",
+      "Bash(npm install:*)",
+      "Bash(ls -la *.config.* 2>/dev/null || echo \"No config files found\")",
+      "Bash(pkill -f \"next dev\" 2>/dev/null || echo \"No process found\")",
+      "Bash(npm run:*)",
+      "Bash(pkill -f \"next dev\" 2>/dev/null || true && echo \"Dev server stopped\")",
+      "Bash(taskkill /F /PID 13552 2>/dev/null || echo \"Process killed\")",
+      "Bash(pkill -f \"next dev\" || true)",
+      "Bash(taskkill /F /IM node.exe 2>/dev/null || echo \"No node process found\")",
+      "Bash(taskkill /F /IM node.exe 2>/dev/null || echo \"No node processes\")",
+      "Bash(taskkill /F /PID 13552 2>/dev/null; rm -f .next/dev/lock; sleep 1)",
+      "Bash(taskkill /F /IM node.exe 2>/dev/null; sleep 1; rm -rf .next/dev/lock)",
+      "Bash(taskkill /PID 13552 /F)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(cmd /c \"taskkill /PID 13552 /F 2>&1\")",
+      "Bash(taskkill /F /IM node.exe 2>/dev/null; sleep 2; rm -rf C:/agentic-coding/kanban/frontend/.next/dev/lock 2>/dev/null; cd C:/agentic-coding/kanban/frontend && npm run dev)",
+      "Bash(cd C:/agentic-coding/kanban/frontend && npx tsc --noEmit 2>&1)",
+      "Bash(cd C:/agentic-coding/kanban/frontend && npx playwright test e2e/ --reporter=line 2>&1)"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Frontend specific
+node_modules/
+.next/
+.env.local
+.env.*.local
+dist/
+build/
+coverage/
+*.log
+.DS_Store
+
+# Testing
+.nyc_output/
+junit.xml
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-*
+
+# OS
+thumbs.db
